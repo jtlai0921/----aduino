@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>滑動燈光控制器</title>
+<link href="css/ui-lightness/jquery-ui.min.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+#swatch {
+  width: 120px;
+  height: 100px;
+  margin: 15px;
+  background-color:#808080;
+}
+#slider {
+
+  width: 300px;
+  margin: 15px;
+}
+</style>
+</head>
+
+<body>
+<h1>LED亮度</h1>
+<div id="swatch"></div>
+<div id="slider"></div>
+<p>請按F12鍵，從控制台查看輸出亮度值</p>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script>
+var light = 127;
+
+function refreshSwatch() {
+  light = $("#slider").slider("value");
+  
+  var str = light + ',' + light + ',' + light;
+  $( "#swatch" ).css( "background-color", "rgb(" + str + ')');
+}
+function upload() {
+  $.ajax({
+      method: "GET",
+      url:  "http://192.168.1.25/pwm",  // 請將此位址改成你的Arduino位址
+      data: { led:9, pwm:light },
+      dataType: "json",
+      success: function(data) {
+        console.log("arduino傳回腳位：" + data.pin + ", 亮度：" + data.pwm);
+      }
+  });
+  console.log("傳送亮度值：" + light);
+}
+   
+$(function() {
+  $( "#slider" ).slider({
+	orientation: "horizontal",
+	range: "min",
+	max: 255,
+	value: 127,
+	slide: refreshSwatch,
+	change: upload
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+﻿// 資料排序實驗之一
+var arr = ['espruino', 'raspberry', 'arduino'];
+arr.sort();  // 依字元順序排列
+console.log(arr.join());
+
+
+
+// 資料排序實驗之二
+var num = [33, 26, 109, 46, 28, 8];
+num.sort(); 
+console.log(num.join());
+
+
+
+// 資料排序實驗之二
+var num = [33, 26, 109, 46, 28, 8];
+num.sort(function(a, b) {
+  return a-b;
+}); 
+console.log(num.join());
+
+
+
+// 濾波程式
+var data = [72, 12, 46, 28, 36];  // 測試資料
+console.log("中數值：" + median(data));
+
+function median(arr) {
+    // 如果陣列沒有元素，則中止函式並傳回null。
+　　if (arr.length == 0) return null;
+　　arr.sort(function (a,b){return a - b});  // 由小到大排列陣列
+    var mid = Math.floor(arr.length / 2);  // 求取中間索引編號
+    
+　　return arr[mid];  // 傳回陣列中間元素的值
+}

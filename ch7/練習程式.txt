@@ -1,0 +1,28 @@
+﻿// 閃爍LED之一
+digitalPulse(LED1, 1, 500);
+
+
+// 閃爍LED之二
+setInterval(function() {
+  digitalPulse(LED1, 1, 500);
+}, 1000);
+
+save();  // 把程式存入快閃記憶體
+
+
+
+// 閃爍LED之三
+setInterval(function() {
+  digitalWrite(LED2, 1);    // 前一秒在A14腳輸出高電位
+  setTimeout(function () {
+    digitalWrite(LED2, 0);  // 後一秒A14腳輸出低電位
+  }, 1000);
+}, 2000);
+
+
+
+// 偵測BTN（按鈕，B12腳），閃爍LED
+setWatch(function() {
+  digitalPulse(LED1,1,200);   // 閃爍一下A13腳的LED1（輸出200ms高脈衝）
+}, BTN, {repeat:true, edge:'rising', debounce:30});
+

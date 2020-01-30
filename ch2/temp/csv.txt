@@ -1,0 +1,5 @@
+var str = "22,60,0,1";
+var data = str.split(",");
+
+console.log('·Å«×¡G' + data[0]);
+console.log('¸}2¡G' + data[2]);

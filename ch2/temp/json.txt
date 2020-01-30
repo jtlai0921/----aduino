@@ -1,0 +1,19 @@
+// 代刚祘Α
+var str = '{"放":22,"楞":60,"计竲":' + 
+          '{"2":0,"3":1}}';
+
+var obj = JSON.parse(str);
+console.log('放' + obj.放);
+console.log('竲2' + obj.计竲[2]);
+
+
+
+// 代刚祘Α
+var str = '{"放":22,"楞":60,' + 
+        '"计竲":[{"pin":2,"val":0},'+
+        '{"pin":3,"val":1}]}';
+
+var obj = JSON.parse(str);
+console.log('放' + obj.放);
+console.log('竲' + obj.计竲[0].pin + 
+            '' + obj.计竲[0].val);

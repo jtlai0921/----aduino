@@ -1,0 +1,3 @@
+﻿請先在此路徑執行npm install安裝必要的模組
+
+執行temp.js程式之前，請先啟動mongoDB資料庫。

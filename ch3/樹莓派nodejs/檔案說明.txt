@@ -1,0 +1,10 @@
+﻿這兩個是樹莓派適用的Node.js安裝程式，請先複製到樹莓派，然後在檔案所在路徑，執行底下的命令進行安裝：
+
+sudo dpkg -i node_4.4.0-1_armhf.deb
+
+或者
+
+sudo dpkg -i node_5.8.0-1_armhf.deb
+
+詳細說明請參閱筆者部落格的這篇文章：
+http://swf.com.tw/?p=836

@@ -1,0 +1,40 @@
+﻿<html>
+  <head>
+    <meta charset="utf-8">
+    <title>C3圖表</title>
+    <!-- Load c3.css -->
+    <link href="css/c3.min.css" rel="stylesheet" type="text/css">
+    <script src="js/d3.v3.min.js"></script>
+    <script src="js/c3.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+  <body>
+  <div id="chart"></div>
+  <script>
+    var socket = io.connect();
+
+    var chart = c3.generate({
+        bindto: '#chart',
+        data: {
+            columns: [
+                ['亮度', 0]
+            ],
+            type: 'gauge'
+        },
+        gauge: {
+        min: 0,
+        max: 100,
+        },
+        size: {
+            height: 180
+        }
+    });
+
+    socket.on('cds', function (data) {
+        chart.load({
+            columns: [['亮度', data.val]]
+        });
+    });
+    </script>
+  </body>
+</html>

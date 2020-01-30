@@ -1,0 +1,3 @@
+﻿請先在此路徑執行npm install安裝必要的模組
+
+Arduino控制板請事先上傳Firmata程式

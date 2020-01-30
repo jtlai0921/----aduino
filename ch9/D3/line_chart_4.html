@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>D3基礎練習</title>
+<style type="text/css">
+  svg {
+    background-color:#BAE3F9;  /* 背景色 */
+  }
+  path {
+    stroke:#00A0E9;     /* 線條顏色 */
+    stroke-width:2px;   /* 線條粗細：2像素 */
+    fill:none;          /* 沒有填色 */
+  }
+  
+  .axis path,
+.axis line {
+    stroke-width: 1px;    /* 線條粗細: 1像素 */
+    stroke: grey;         /* 線條: 灰色 */
+    fill: none;           /* 填色: 無 */
+    shape-rendering: crispEdges;  /* 外型呈現: 清晰邊緣 */
+}
+</style>
+<script src="js/d3.min.js"></script>
+</head>
+
+<body>
+<div id="graph">
+</div>
+<script>
+var w = 800,     // SVG圖像寬
+   h = 300,      // SVG圖像高
+   padding = 30;  // 留白
+
+// 折線圖數據
+var dht11Data = [  { '溫度': 20,  '濕度': 71, '日期': '2015-03-29T00:00:00Z'},
+                { '溫度': 22,  '濕度': 66, '日期': '2015-03-30T00:00:00Z'},
+				  { '溫度': 24,  '濕度': 68, '日期': '2015-03-31T00:00:00Z'},
+				  { '溫度': 23,  '濕度': 70, '日期': '2015-04-01T00:00:00Z'},
+				  { '溫度': 20,  '濕度': 74, '日期': '2015-04-02T00:00:00Z'},
+				  { '溫度': 23,  '濕度': 69, '日期': '2015-04-03T00:00:00Z'},
+				  { '溫度': 26,  '濕度': 72, '日期': '2015-04-04T00:00:00Z'} ];
+
+// 轉換（確認）資料類型
+dht11Data.forEach(function(d) {
+    d['日期'] = new Date(d['日期']);  // 轉換成日期類型值
+　　　d['溫度'] = +d['溫度'];     // 轉換成數字類型值
+　　　d['濕度'] = +d['濕度'];     // 轉換成數字類型值
+});
+
+// 在id名為“graph”的元素中，插入<svg>標籤。
+var svg = d3.select("#graph")
+        .append("svg")
+        .attr("width", w)
+        .attr("height", h);
+
+// 建立垂直與水平比例轉換函式
+var yScale = d3.scale.linear()
+				.domain([
+					0, 
+					d3.max(dht11Data, function(d) { return d['溫度']; })
+				])
+				.range([h-padding, padding]);
+
+var xScale = d3.time.scale()
+				.domain(d3.extent(dht11Data, function(d) { 
+                  return d['日期'].setHours(0,0,0,0); }))
+				.range([padding, w-padding]);
+
+// 建立垂直比例轉換函式
+var yScaleHum = d3.scale.linear()
+				       .domain([
+					      0, 
+					      d3.max(dht11Data, function(d) { return d['濕度']; })
+				        ])
+				       .range([h-padding, padding]);
+
+// 根據比例函式，將日期與濕度轉換成座標值，
+var drawLineHum = d3.svg.line()
+    .x(function(d) { return xScale(d['日期']); })
+    .y(function(d) { return yScaleHum(d['濕度']); });
+
+// 根據比例函式，將日期與溫度轉換成座標值。
+var drawLine = d3.svg.line()
+    .x(function(d) { return xScale(d['日期']); })
+    .y(function(d) { return yScale(d['溫度']); });
+
+// 在<svg>元素中插入<path>標籤以及繪圖指令
+svg.append("path")
+   .attr("d", drawLine(dht11Data));
+   
+svg.append("path")
+   .attr("d", drawLineHum(dht11Data))
+   .style("stroke", "blue");
+   
+var yAxis = d3.svg.axis()
+               .scale(yScale)
+               .orient("left");
+
+// 調整Y軸單位標示線位置		   
+svg.append("g")
+   .attr("class", "axis")
+   .attr("transform", "translate(" + padding + ", 0)")
+   .call(yAxis);
+   
+// 附加X軸單位線
+var xAxis = d3.svg.axis()
+                  .scale(xScale)
+                  .orient("bottom");
+
+var xAxis = d3.svg.axis()
+                  .scale(xScale)
+                  .orient("bottom")
+                  .ticks(d3.time.days)
+                  .tickFormat(d3.time.format("%m/%d"));
+
+svg.append("g")
+   .attr("class", "axis")
+   .attr("transform", "translate(0, " + (h - padding) + ")")
+   .call(xAxis);
+   
+// 繪製垂直（濕度）軸線的自訂函式
+var yAxisHum = d3.svg.axis()
+                .scale(yScaleHum)
+                .orient("right").ticks(10);
+
+svg.append("g")
+    .attr("class", "axis")
+	.attr("transform", "translate(" + (w-padding) + ", 0)")  // 移到畫面右邊
+    .call(yAxisHum);
+</script>
+</body>
+</html>

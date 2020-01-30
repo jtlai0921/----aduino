@@ -1,0 +1,35 @@
+<%
+function formatDate(date) {    // 格式化日期資料
+  var year = date.getFullYear();
+  var month = (1 + date.getMonth()).toString();
+  month = month.length > 1 ? month : '0' + month;
+  var day = date.getDate().toString();
+  day = day.length > 1 ? day : '0' + day;
+  return year + '/' + month + '/' + day;
+}
+%>
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>最新溫濕度數據</title>
+</head>
+
+<body>
+<h1>最新溫濕度數據</h1>
+<table><tbody>
+<tr>
+  <th>溫度</th><th>濕度</th><th>時間</th>
+</tr>
+<%
+  docs.forEach(function(d) {
+%>
+<tr>
+  <td><%= d['溫度'] %>&deg;C</td>
+  <td><%= d['濕度'] %>%</td>
+  <td><%= formatDate(d['時間']) %></td>
+</tr>
+<% }); %>
+</table></tbody>
+</body>
+</html>

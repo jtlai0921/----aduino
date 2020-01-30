@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>C3圖表</title>
+<!-- Load c3.css -->
+<link href="css/c3.min.css" rel="stylesheet" type="text/css">
+<style>
+    
+</style>
+<script src="js/d3.v3.min.js"></script>
+<script src="js/c3.min.js"></script>
+</head>
+
+<body>
+<div id="chart"></div>
+<script>
+var tckCount = 0;
+var totalTck = 5;
+
+function minSec() {
+    var now = new Date();
+    var min = now.getMinutes(); 
+    min = (min < 10) ? ('0' + min) : min;
+    
+    var sec = now.getSeconds();
+    sec = (sec < 10) ? ("0" + sec) : sec;
+    
+    return min + ':' + sec;
+}
+
+function pseudo() {
+    return Math.floor(Math.random() * 100);
+}
+
+var chart = c3.generate({
+    padding: {right: 50},
+    size: {
+         height: 300,
+         width: 600 
+    },
+    data: {
+        columns: [
+            ['時間', minSec()],
+            ['亮度', pseudo()]
+        ],
+        x: '時間',
+        xFormat: '%M:%S',
+        colors: {  '亮度': '#ff6600' }
+    },
+    axis: {
+        x: {
+            type: 'timeseries',
+            label: '分：秒',
+            tick: {
+                rotate: 30,
+                format:'%M:%S'
+            }
+        },
+        y: {
+            label: '亮度',
+            max: 100,
+            min: 0,
+            padding: {top: 10, bottom: 10}
+        }
+    }
+});
+
+setInterval(function () {
+    chart.flow({
+        columns: [
+            ['時間', minSec()],
+            ['亮度', pseudo()]
+        ],
+        length: (tckCount < totalTck) ? 0 : 1,  // 移動一格
+        duration: 500,
+        done: function() {
+            tckCount = (tckCount < totalTck) ? ++tckCount : totalTck; 
+            console.log('圖表展示完畢!' + tckCount);
+        }
+    })
+}, 2000);
+</script>
+</body>
+</html>

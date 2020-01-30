@@ -1,0 +1,9 @@
+{
+  "name":"streaming",
+  "description": "串流視訊",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "^4.12.0",
+    "socket.io": "^1.3.4"
+  }
+}

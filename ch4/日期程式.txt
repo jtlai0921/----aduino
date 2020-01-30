@@ -1,0 +1,24 @@
+﻿// 日期程式一
+var now = new Date();   // 建立日期物件
+console.log("日期：" + now.getDate());  // 取出now裡的「日期」資料
+
+
+// 日期程式二
+// 自訂「時間」函式
+var time = function () {
+  var now = new Date();
+  var str = now.getFullYear() + '.' + 
+          (now.getMonth()+1) + '.' +
+          now.getDate()
+           + '_' + 
+          ((now.getHours() < 10) ? "0" : "") + now.getHours()
+           + '.' +
+          ((now.getMinutes() < 10) ? "0" : "") + now.getMinutes() 
+           + '.' + 
+          ((now.getSeconds() < 10) ? "0" : "") + now.getSeconds();
+    
+  return str;
+};
+
+// 執行自訂時間函式
+time();

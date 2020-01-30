@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>JSON測試</title>
+ </head>
+ <body>
+  <script src="js/jquery-2.1.3.min.js"></script>
+  <script>
+    var str = '{"溫度":22,"濕度":60,"數位腳":{"2":0,"3":1}}';
+
+    var obj = jQuery.parseJSON(str);
+    console.log('溫度：' + obj.溫度);
+    console.log('腳2：' + obj.數位腳[2]);
+  </script>
+ </body>
+</html>

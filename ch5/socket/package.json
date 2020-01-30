@@ -1,0 +1,9 @@
+{
+  "name":"chatTest",
+  "description": "即時通訊測試",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "^4.12.0",
+    "socket.io": "^1.3.4"
+  }
+}

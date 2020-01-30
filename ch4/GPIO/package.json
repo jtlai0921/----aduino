@@ -1,0 +1,7 @@
+{
+  "name":"gpioTest",
+  "version": "0.0.1",
+  "dependencies": {
+    "onoff": "^1.0.2"
+  }
+}

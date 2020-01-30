@@ -1,0 +1,1 @@
+start "啟動MongoDB資料庫" "C:\mongoDB\bin\mongod.exe" --dbpath D:\mongo

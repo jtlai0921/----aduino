@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name = "format-detection" content = "telephone=no"/>
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css">
+        <title>序列埠LED開關</title>
+    </head>
+    <body>
+		<div data-role="page">
+            <div data-role="header">
+                    <h1>序列埠LED開關</h1>
+            </div>
+            
+            <div data-role="content">
+                <div id="serialPanel">
+                    <a href="#" id="openBtn" data-role="button" data-inline="true" data-icon="check">開啟序列埠</a>
+                </div>
+                
+                <div id="ledPanel">
+                    <div class="ui-field-contain">
+                      <label for="ledSW">LED開關：</label>
+                        <select name="ledSW" id="ledSW" data-role="slider">
+                          <option value="0">OFF</option>
+                          <option value="1">ON</option>
+                        </select>
+                    </div>
+                    <p>類比值：<span id="A0"></span></p>
+                    <p>
+                        <a href="#" id="closeBtn" data-role="button" data-inline="true" data-icon="delete">關閉序列埠</a>
+                    </p>
+                </div>
+            
+                <div id="msg">
+                </div>        
+            </div>
+        </div>
+        <script src="js/jquery-1.11.3.min.js"></script>
+        <script src="js/jquery.mobile-1.4.5.min.js"></script>
+        <script src="cordova.js"></script>
+        <script src="js/index.js"></script>
+        <script type="text/javascript">
+            app.init();
+        </script>
+    </body>
+</html>

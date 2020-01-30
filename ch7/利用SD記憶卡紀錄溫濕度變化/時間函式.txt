@@ -1,0 +1,11 @@
+﻿// 聖誕節時間
+var xmas = new Date("2020-12-25");
+var xmas = new Date(2020, 11, 25);
+
+
+
+// 聖誕節距今
+var today = new Date();     // 取得當前日期與時間
+var xmas = new Date("2020-12-25");
+var diff = xmas - today;    // 計算時間差（毫秒數）
+console.log(Math.floor(diff / (24*60*60*1000)));

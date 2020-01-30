@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>C3圖表</title>
+<!-- Load c3.css -->
+<link href="css/c3.min.css" rel="stylesheet" type="text/css">
+<style>
+.c3-axis-y-label, .c3-axis-y2-label {
+    font-family: "微軟正黑體", sans-serif;
+    font-size: 13px;
+}    
+</style>
+<script src="js/d3.v3.min.js"></script>
+<script src="js/c3.min.js"></script>
+</head>
+
+<body>
+<div id="chart"></div>
+<script>
+var chart = c3.generate({
+    size: {
+                height: 300,
+                width: 600
+            },
+    data: {
+        x:'日期',
+        xFormat: "%Y-%m-%d",
+        columns: [
+            ['日期', '2015-03-29', '2015-03-30', '2015-03-31','2015-04-01', '2015-04-02', '2015-04-03', '2015-04-04'],
+            ['溫度', 20, 22, 24, 23, 20, 23, 26],
+            ['濕度', 51, 46, 48, 50, 54, 49, 52]
+        ],
+        axes: {
+            '溫度': 'y',
+            '濕度': 'y2'
+        },
+        colors: {
+            '溫度':'#ff8433',
+            '濕度':'#3366ff'
+        }
+    },
+    axis: {
+      x: {
+          type: 'timeseries',
+          tick: { format: '%m/%d' }
+      },
+      y: {
+          label: '溫度',
+          max: 40, min: 0,
+          tick: {
+            format: function (d) { return d + "°C"; }
+          }
+      },
+      y2: {
+          label: '濕度',
+          show: true,
+          tick: {
+            format: function (d) { return d + "%"; }
+         }
+      }
+    }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+﻿練習程式.txt：
+包含本章各小節的程式片段，可直接貼入瀏覽器的JavaScript控制台測試。
+
+calc.html：
+加法計算的表單頁面，以及採用document.getElementById()方法擷取欄位內容的語法示範。
+
+event.html：
+<body>標籤的onLoad，以及超連結的onClick事件語法示範。
+
+external.html：
+連結外部.js檔的<script>標籤示範

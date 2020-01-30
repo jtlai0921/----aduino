@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=UTF-8" />
+        <meta name = "format-detection" content = "telephone=no"/>
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css">
+        <title>LED開關</title>
+    </head>
+    <body>
+		<div data-role="page">
+            <div data-role="header">
+                    <h1>LED開關</h1>
+            </div>
+            
+            <div data-role="content">
+                <div id="btPanel">
+                    <ul data-role="listview" id="btList">
+                       <li data-role="list-divider">藍牙裝置</li>
+                    </ul>
+                    <div style="margin: 10px">
+                        <a href="#" id="refreshBtn" data-role="button" data-inline="true" data-icon="refresh">重新整理</a>
+                    </div>
+                </div>
+                
+                <div id="ledPanel">
+                    <div class="ui-field-contain">
+                      <label for="ledSW">LED開關：</label>
+                        <select name="ledSW" id="ledSW" data-role="slider">
+                          <option value="0">OFF</option>
+                          <option value="1">ON</option>
+                        </select>
+                    </div>
+    
+                    <p>
+                        <a href="#" id="disconnectBtn" data-role="button" data-inline="true" data-icon="delete">中斷藍牙連線</a>
+                    </p>
+                </div>
+            
+                <div id="msg">
+                </div>        
+            </div>
+        </div>
+        <script src="js/jquery-1.11.3.min.js"></script>
+        <script src="js/jquery.mobile-1.4.5.min.js"></script>
+        <script src="cordova.js"></script>
+        <script src="js/index.js"></script>
+        <script type="text/javascript">
+            app.init();
+        </script>
+    </body>
+</html>

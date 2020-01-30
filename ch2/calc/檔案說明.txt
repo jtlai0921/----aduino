@@ -1,0 +1,8 @@
+﻿calc.html：
+引用位於js資料夾裡的jQuery程式庫，並使用jQuery語法存取表單欄位值。
+
+calc_cdn.html：
+引用CDN網路的jQuery程式庫。
+
+calc2.html：
+加上超連結觸發相加計算的jQuery程式。

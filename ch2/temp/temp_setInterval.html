@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>顯示溫度</title>
+ </head>
+ <body>
+  現在氣溫： <span id="temp">24</span> &deg;C
+  <script src="js/jquery-2.1.3.min.js"></script>
+  <script>
+    $(function(){
+        function getTemp() {
+            $.get("http://192.168.1.25/temp", function(data){
+                $("#temp").html(data);
+            });
+        }
+        getTemp();  // 網頁載入完畢時，立即讀取並顯示溫度值。
+        window.setInterval(function(){
+            getTemp();
+        }, 5000);
+    });
+  </script>
+ </body>
+</html>

@@ -1,0 +1,14 @@
+﻿Oracle官網的JDK下載頁：
+http://www.oracle.com/technetwork/java/javase/downloads/index.html
+
+Android SDK下載頁：
+http://developer.android.com/sdk/index.html
+
+Apache Ant下載頁：
+http://ant.apache.org/bindownload.cgi
+
+Cordova安裝指令：
+npm install -g cordova
+
+jQuery Mobile下載頁：
+https://jquerymobile.com/

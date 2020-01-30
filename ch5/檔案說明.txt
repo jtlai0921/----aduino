@@ -1,0 +1,15 @@
+﻿arduino資料夾：
+包含LM35溫度感測器的示範程式
+
+static資料夾：
+透過express套件提供靜態網頁
+
+five資料夾：
+Johnney-Five（霹靂五號）的基礎線習程式，Arduino控制板請事先上傳Firmata程式。
+
+socket資料夾：
+使用socket.io建立基本的即時通訊程式
+
+matrix資料夾：
+使用霹靂五號和socket.io建立的即時繪製LED矩陣程式
+

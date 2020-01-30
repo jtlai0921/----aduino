@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>XML測試</title>
+ </head>
+ <body>
+  <script src="js/jquery-2.1.3.min.js"></script>
+  <script>
+    var str = '<控制器><溫度>22</溫度><濕度>60</濕度>' + 
+            '<數位腳 pin2="0" pin3="1"/></控制器>';
+    var xmlDoc = $.parseXML(str);
+        xml  = $(xmlDoc),
+        temp = xml.find("溫度"),
+        val  = xml.find("數位腳").attr('pin2');
+    
+    console.log('溫度：' + temp.text());
+    console.log('腳2：' + val);
+  </script>
+ </body>
+</html>

@@ -1,0 +1,11 @@
+﻿請先在此路徑執行npm install安裝必要的模組
+
+
+blink.js:
+閃爍LED
+
+sw.js：
+讀取開關狀態
+
+pirCam.js：
+透過PIR感測器啟動拍照

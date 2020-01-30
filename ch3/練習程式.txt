@@ -1,0 +1,18 @@
+﻿console.log('你好');
+console.log('%s：%d', '年份', 2015);
+
+// ES6功能測試
+// 箭頭函式
+var foo = (str) => {
+  console.log('你好，' + str);
+}
+foo('cubie');
+
+// tick字元與多行字串
+var str = `萬物聯網、
+          跨界遊藝。`;
+console.log(str);
+
+// tick字元與表達式
+var x = 3, y = 6;
+console.log(`計算結果：${x+y}`);

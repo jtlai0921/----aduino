@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Arduino藍牙機械昆蟲控制器</title>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+</head>
+<body>
+
+<div data-role="page" id="controller" data-theme="b">
+
+	<div data-role="header">
+		<h1>機械昆蟲控制器</h1>
+	</div><!-- /header -->
+    
+	<div data-role="content" class="ui-content">
+       <div id="btPanel">
+          <ul data-role="listview" id="btList">
+             <li data-role="list-divider">藍牙裝置</li>
+          </ul>
+          <div style="margin: 10px">
+             <a href="#" id="refreshBtn" data-role="button" data-inline="true" data-icon="refresh">重新整理</a>
+          </div>
+       </div>
+       <div id="botPanel">
+          <a href="#" id="forwardBtn" class="ui-btn ui-corner-all ui-icon-arrow-u ui-btn-icon-top ui-shadow-icon">前進</a>
+          <div class="ui-grid-b">
+            <div class="ui-block-b"><a href="#" id="leftBtn" class="ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-top ui-shadow-icon">左轉</a></div>
+            <div class="ui-block-b"><a href="#" id="stopBtn" class="ui-btn ui-corner-all ui-icon-delete ui-btn-icon-top ui-shadow-icon">停止</a></div>
+            <div class="ui-block-b"><a href="#" id="rightBtn" class="ui-btn ui-corner-all ui-icon-arrow-r ui-btn-icon-top ui-shadow-icon">右轉</a></div>
+          </div>
+          <a href="#" id="backBtn" class="ui-btn ui-corner-all ui-icon-arrow-d ui-btn-icon-top ui-shadow-icon">後退</a>
+          
+          <p>
+              <a href="#" id="disconnectBtn" data-role="button" data-inline="true" data-icon="delete">中斷藍牙連線</a>
+          </p>
+       </div>
+         
+       <div id="msg"></div>
+	</div><!-- /content -->
+    
+    <div data-role="footer" data-position="fixed">
+      &copy; 2015 swf.com.tw
+	</div>
+</div>
+<script src="js/jquery-2.1.3.min.js"></script>
+<script src="js/jquery.mobile-1.4.5.min.js"></script>
+<script src="cordova.js"></script>
+<script src="js/index.js"></script>
+<script type="text/javascript">
+   app.init();
+</script>
+</body>
+</html>

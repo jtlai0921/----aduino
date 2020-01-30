@@ -1,0 +1,11 @@
+﻿calc資料夾：
+包含相加計算的表單網頁
+
+jquery-ui-1.11.4.custom資料夾：
+從jQuery UI網站下載的自訂UI模組（僅滑桿介面）
+
+slide資料夾：
+包含滑桿介面的網頁
+
+temp資料夾：
+包含CSV, XML和JSON資料以及溫濕度網頁和Arduino程式

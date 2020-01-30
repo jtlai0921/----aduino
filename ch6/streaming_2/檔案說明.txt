@@ -1,0 +1,12 @@
+﻿請先在此路徑執行npm install安裝必要的模組
+
+Arduino控制板請事先上傳Firmata程式
+
+stream.js檔：
+透過Node啟動mjpg_streamer串流視訊程式
+
+servo_key.js：
+啟動mjpg_streamer串流視訊程式，並接收按鍵控制伺服馬達。執行Node程式之後，透過瀏覽器開啟此網站，並瀏覽到index_key.html，即可透過方向鍵操控伺服馬達。例如，假設你的樹莓派IP是192.168.1.50，請輸入：192.168.1.50:5438/index_key.html
+
+servo_key.js：
+啟動mjpg_streamer串流視訊程式，並接收搖桿控制伺服馬達。執行Node程式之後，透過瀏覽器開啟此網站，並瀏覽到index_gamepad.html，即可透過實體搖桿（遊戲控制器）操控伺服馬達；瀏覽到index_virtual.html，即可透過虛擬搖桿（觸控面板）操控伺服馬達

@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>亮度計</title>
+<!-- Load c3.css -->
+<link href="css/c3.min.css" rel="stylesheet" type="text/css">
+<script src="js/d3.v3.min.js"></script>
+<script src="js/c3.min.js"></script>
+</head>
+
+<body>
+<div id="cdsChart"></div>
+<script>
+var chart = c3.generate({
+	bindto: '#cdsChart',
+    data: {
+        columns: [
+            ['亮度', 33]
+        ],
+        type: 'gauge'
+    }
+});
+</script>
+</body>
+</html>

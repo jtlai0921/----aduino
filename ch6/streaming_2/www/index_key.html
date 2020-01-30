@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>串流視訊：方向鍵移動伺服馬達</title>
+<script src="/socket.io/socket.io.js"></script>
+<script src="http://code.jquery.com/jquery.js"></script>
+</head>
+<body>
+<h1>串流視訊</h1>
+<!-- 請自行修改串流視訊來源的位址 -->
+<p><img src="http://192.168.1.12:8080/?action=stream"></p>
+<p>請按下方向鍵，調整攝影機拍攝角度。</p>
+<script>
+	var socket = io.connect();
+	
+	function sendKey(key) {
+		socket.emit('servo', {'dir':key});
+	}
+	
+	$( document ).ready(function(){
+　　　	  // 在網頁文件上附加偵聽「按下按鍵」事件的處理程式
+ 		$(document).keydown(function(e){
+			switch (e.keyCode) {
+				case 37:  // 左
+					sendKey("left");
+					break;
+				case 39:  // 右
+					sendKey("right");
+					break;
+				case 38:  // 上
+					sendKey("up");
+					break;
+				case 40:  // 下
+					sendKey("down");
+					break;
+			}
+    	});
+	});
+</script>
+</body>
+</html>

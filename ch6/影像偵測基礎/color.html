@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>追蹤色塊</title>
+  <script src="js/tracking-min.js"></script>
+  <script src="js/stats.min.js"></script>
+  <script src="js/dat.gui.min.js"></script>
+  <script src="js/color_camera_gui.js"></script>
+  <style>
+  video, canvas {
+    margin-left: 120px;
+    margin-top: 40px;
+    position: absolute;
+  }
+  </style>
+</head>
+<body>
+  <video id="video" width="640" height="480" preload autoplay muted></video>
+  <canvas id="canvas" width="640" height="480"></canvas>
+
+  <script>
+    var video = document.getElementById('video');
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+
+    tracking.ColorTracker.registerColor('green', function(r, g, b) {
+    if (r < 120 && g > 120 && b < 120) {
+        return true;
+    }
+    return false;
+    });
+    
+    var tracker = new tracking.ColorTracker(['cyan', 'green']);
+    
+    tracking.track('#video', tracker, { camera: true });
+    tracker.on('track', function(event) {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    event.data.forEach(function(rect) {
+        context.strokeStyle = rect.color;
+        context.strokeRect(rect.x, rect.y, rect.width, rect.height);
+    });
+    });
+    initGUIControllers(tracker);
+  </script>
+
+</body>
+</html>

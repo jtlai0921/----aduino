@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>追蹤人臉</title>
+
+  <script src="js/tracking-min.js"></script>
+  <script src="js/face-min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <style>
+  video, canvas {
+    margin-left: 120px;
+    margin-top: 40px;
+    position: absolute;
+  }
+  </style>
+</head>
+<body>
+  <video id="video" width="320" height="240" preload autoplay muted></video>
+  <canvas id="canvas" width="320" height="240"></canvas>
+
+  <script>
+    var socket = io.connect();
+    var video = document.getElementById('video');
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+
+    var tracker = new tracking.ObjectTracker('face');
+    tracker.setInitialScale(4);
+    tracker.setStepSize(2);
+    tracker.setEdgesDensity(0.1);
+
+    tracking.track('#video', tracker, { camera: true });
+
+    tracker.on('track', function(event) {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        event.data.forEach(function(rect) {
+            context.strokeStyle = '#f00';
+            context.strokeRect(rect.x, rect.y, rect.width, rect.height);
+            controlServo(rect.x + (rect.width/2), rect.y + (rect.height/2));
+        });
+    });
+
+    var socket = io.connect();
+    function controlServo(x, y) {
+      var dx = Math.floor(x * 0.56);
+      var dy = Math.floor(y * 0.75);
+      socket.emit('face', {'x': dx, 'y': dy});
+    }
+  </script>
+</body>
+</html>

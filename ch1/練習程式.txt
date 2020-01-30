@@ -1,0 +1,135 @@
+變數資料類型練習：
+
+console.log(typeof  "hello"); 	// 顯示"string"（字串）
+console.log(typeof  13);        // 顯示"number"（數字）
+console.log(typeof  3.14159); 	// 顯示"number"（數字）
+console.log(typeof  true);  	// 顯示"boolean"（布林）
+console.log(typeof  undefined); // 顯示"undefined"（未定義）
+console.log(typeof  null);	// 顯示"object"（物件）
+
+轉換數字類型
+Number("1e3")
+Number("0xCC")
+Number("123abc")
+parseInt("123abc")
+parseInt("8.24")
+parseFloat("8.24")
+
+
+數字格式與算術運算子
+
+console.log(0.1 + 0.2);  // 輸出：0.30000000000000004
+console.log(0.1 * 0.2);  // 輸出：0.020000000000000004
+console.log(0.1 + 0.2 == 0.3);  // 比較運算值，結果為false
+
+邏輯與位移運算
+
+0b0101 & 0b0100
+0b0101 | 0b0010
+0b0101 ^ 0b1111
+0b0101 >> 1
+0b0101 >> 2
+
+2進位轉換成10進位數字：
+
+parseInt('1101', 2);
+
+浮點數字精確度
+
+var num = 0.1 * 0.2;
+console.log(parseFloat(num.toPrecision(12)));    // 輸出：0.02
+
+隨機數字
+
+var id = setInterval(function () {
+　　var num = Math.floor(Math.random() * 1024);
+　　console.log(num);
+}, 3000);
+
+clearInterval(id);  // 停止指定識別碼的定時迴圈
+
+字串相連
+
+var str = 10 + "321";
+console.log(str);
+
+設定函式參數
+
+function add(x, y) {
+  if (x === undefined) {
+    x = 0;
+  }
+  y = y || 0;
+  return x + y;
+}
+console.log(add(5)); 
+console.log(add(5, 3));
+
+區域變數
+
+function counter() {
+  var num = num || 0;
+  return ++num;
+}
+
+console.log(counter());
+
+全域變數
+
+var num = 0;
+function counter() {
+  return ++num;
+}
+
+console.log(counter());
+
+定時執行敘述：
+
+setTimeout(function(){
+  console.log("泡麵可以吃了");
+}, 180000);
+
+clearInterval(81);
+
+重複執行敘述：
+
+setInterval(function() {
+  console.log('hello');
+},1000);
+
+陣列與迴圈
+
+// 陣列宣告
+var she = ['Selina', 'Hebe', 'Ella'];
+var total = she.length;
+
+// 使用for迴圈
+for(var i=0; i<total; i++) {
+  console.log(she[i]);
+}
+
+// 替換元素1
+she.splice(1,1,"杰倫", "昆凌");
+
+// 使用forEach
+she.forEach(function(val){
+  console.log(val);
+});
+
+物件資料
+
+var lightObj = { wall:"ON", 
+                 table:"OFF", 
+                 magic:"ON" };
+console.log(lightObj.magic);
+
+for(var key in lightObj) {
+    var val = lightObj[key];
+    
+    console.log("屬性："+key+" 值："+val);
+}
+
+var data = { '@-@':8,
+             '2':"number",
+             ' ':"Space" };
+console.log(data["@-@"]);

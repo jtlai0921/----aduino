@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>類比搖桿（遊戲控制器）移動伺服馬達</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script src="/socket.io/socket.io.js"></script>
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="js/gamepad.min.js"></script>
+</head>
+<body>
+    <h1>串流視訊</h1>
+    <!-- 請自行修改串流視訊來源的位址 -->
+    <p><img src="http://192.168.1.12:8080/?action=stream"></p>
+    <p>請透過電玩控制器調整攝影機拍攝角度。</p>
+	<script>
+	var socket = io.connect();
+	
+	function sendJoy(val) {
+		socket.emit('joy', {
+			'stick': val
+        });
+    }
+
+	$(document).ready(function() {
+    　　var stick = {'x':90, 'y':90};  // 宣告儲存搖桿值的變數
+        var gamepad = new Gamepad();  // 建立遊戲控制器物件
+
+        gamepad.bind(Gamepad.Event.AXIS_CHANGED, function(e) {
+            console.log(e.axis + ' 搖桿：' + e.value);
+            
+            if (e.axis == "LEFT_STICK_X") {   // 讀取搖桿的水平值
+                // 類比搖桿值介於-1~1，需要經過底下的算式轉成0~180
+                stick.x = 180 - Math.floor((e.value * 90) + 90);
+            }
+            
+            if (e.axis == "LEFT_STICK_Y") {   // 讀取搖桿的垂直值
+                stick.y = 180 - Math.floor((e.value * 90) + 90);
+            }
+            
+            sendJoy(stick);  // 傳送搖桿值  
+        });
+        
+    // 若搖桿程式庫無法進行初始化…
+        if (!gamepad.init()) {
+            alert('此瀏覽器不支援遊戲控制器，請改用最新版的Firefox或Chrome。');
+        }
+    });
+	</script>
+</body>
+</html>

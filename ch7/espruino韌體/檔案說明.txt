@@ -1,0 +1,6 @@
+﻿stm32loader.py:
+在STM32相容控制板上燒錄Espruino韌體的程式，原始碼位址：
+https://github.com/espruino/Espruino/blob/master/scripts/stm32loader.py
+
+Espruino韌體下載網址：
+http://www.espruino.com/Download

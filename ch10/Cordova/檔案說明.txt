@@ -1,0 +1,8 @@
+﻿hello資料夾:
+使用jQuery Mobile建立基本手機App介面
+
+hello_back資料夾:
+包含回上頁（back）功能的App介面
+
+wifiBot資料夾：
+使用手機控制Arduino LED的App（Arduino控制板請事先上傳ledPWM.ino程式）

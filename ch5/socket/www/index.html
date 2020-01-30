@@ -1,0 +1,20 @@
+﻿<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io.connect();
+
+      socket.on('pi', function (data) {
+        console.log(data.msg);
+      });
+
+      setInterval(function(){
+         // 每隔1000ms（1秒）發送一次訊息
+         socket.emit('user', {'text': '歲月如梭'});
+      }, 1000);
+    </script>
+  </head>
+  <body>
+  </body>
+</html>

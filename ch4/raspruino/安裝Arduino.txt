@@ -1,0 +1,11 @@
+﻿// 請在樹莓派系統中執行底下命令，安裝Arduino IDE軟體
+
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install arduino
+
+// 設置使用GPIO連接與燒錄Arduino
+
+wget http://swf.com.tw/raspruino/setup.tar.gz
+tar -xvzf setup.tar.gz
+sudo raspruino/setup

@@ -1,0 +1,10 @@
+﻿// 列舉目錄，請在樹莓派中執行
+var exec = require('child_process').exec;
+exec('ls -al', function(error, stdout, stderr) {
+  console.log('命令回應：' + stdout);
+  console.log('命令錯誤訊息： ' + stderr);
+  if (error !== null) {
+    console.log('exec執行出錯了：' + error);
+  }
+});
+

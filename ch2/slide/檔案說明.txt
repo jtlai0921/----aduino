@@ -1,0 +1,5 @@
+﻿slider_1.html：
+在JS控制台顯示滑桿數值
+
+slider_1_ajax.html：
+透過AJAX技術，以GET方法傳送PWM值。

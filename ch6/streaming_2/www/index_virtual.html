@@ -1,0 +1,68 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>串流視訊：使用虛擬搖桿移動伺服馬達</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<style>
+	    body {
+			overflow	: hidden;
+			padding		: 0;
+			margin		: 0;
+			background-color: #BBB;
+		}
+		#result {
+			position	: absolute;
+			top		: 0px;
+			width		: 100%;
+			padding		: 5px;
+			text-align	: center;
+		}
+    </style>
+</head>
+<body>
+<h1>串流視訊</h1>
+<!-- 請自行修改串流視訊來源的位址 -->
+<p><img src="http://192.168.1.12:8080/?action=stream"></p>
+<p>請碰觸螢幕，調整攝影機拍攝角度。</p>
+<div id="result">
+</div> 
+<script src="/socket.io/socket.io.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="js/virtualjoystick.js"></script>
+<script>
+	var socket = io.connect();
+	
+	function sendJoy(val) {
+		socket.emit('joy', {
+			'stick': val
+        });
+    }
+	
+	var joystick	= new VirtualJoystick({
+		strokeStyle : '#FFCC00',
+		mouseSupport	: true,
+		limitStickTravel: true,
+		stickRadius	: 90
+	});
+	
+	var last = {'x':90, 'y':90};
+	var now = {'x':90, 'y':90};
+	
+	$(document).ready(function() {
+		setInterval(function(){
+			now.x = 180 - (Math.floor(joystick.deltaX()) + 90);
+			now.y = 180 - (Math.floor(joystick.deltaY()) + 90);
+			
+			if (now.x != last.x || now.y != last.y) {
+				last.x = now.x;
+				last.y = now.y;
+				
+				$('#result').html('x:'+ now.x + ', y:' + now.y);
+				sendJoy(now);
+			}
+			
+		}, 100);
+	});
+</script>
+</body>
+</html>

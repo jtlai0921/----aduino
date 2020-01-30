@@ -1,0 +1,20 @@
+﻿LED:
+透過藍牙遙控燈光開關（註：需搭配Arduino端的LED.ino程式）
+
+bot:
+藍牙遙控機器人App（註：需搭配Arduino端的insectBot.ino程式）
+
+motion:
+加速度感測器程式，使用藍牙連接（註：需搭配Arduino端的motion.ino程式）。
+
+Device Motion說明文件：
+https://www.npmjs.com/package/cordova-plugin-device-motion
+
+USBSerial:
+透過USB-OTG序列線連接Arduino UNO控制板（註：需搭配Arduino端的USBSerial.ino程式）
+
+serial（序列通訊）外掛的官網：
+https://github.com/xseignard/cordovarduino
+
+wifiBot:
+延續第10章的「網路燈光控制器」，加入處理「返回（Back）」鍵和連線錯誤的事件處理程式。

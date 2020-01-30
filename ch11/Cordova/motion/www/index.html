@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name = "format-detection" content = "telephone=no"/>
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css">
+        <title>加速度感測器</title>
+    </head>
+    <body>
+		<div data-role="page">
+            <div data-role="header">
+                    <h1>加速度感測器</h1>
+            </div>
+            
+            <div data-role="content">
+                <div id="btPanel">
+                    <ul data-role="listview" id="btList">
+                       <li data-role="list-divider">藍牙裝置</li>
+                    </ul>
+                    <div style="margin: 10px">
+                        <a href="#" id="refreshBtn" data-role="button" data-inline="true" data-icon="refresh">重新整理</a>
+                    </div>
+                </div>
+                
+                <div id="motionPanel">
+                    <div class="ui-field-contain">
+                      <label for="accSW">偵測加速度：</label>
+                        <select name="accSW" id="accSW" data-role="slider">
+                          <option value="0">OFF</option>
+                          <option value="1">ON</option>
+                        </select>
+                    </div>
+          			<div id="accData"></div>
+                </div>
+            
+                <div id="msg">
+                </div>        
+            </div>
+        </div>
+        <script src="cordova.js"></script>
+        <script src="js/jquery-1.11.3.min.js"></script>
+        <script src="js/jquery.mobile-1.4.5.min.js"></script>
+        <script src="js/index.js"></script>
+    </body>
+</html>

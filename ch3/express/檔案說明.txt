@@ -1,0 +1,29 @@
+請先在此路徑執行：
+
+npm install express
+
+以及：
+
+npm install body-parser
+
+
+expr_1.js：
+基本的express網站
+
+expr_2.js：
+加入本機網頁檔案以及路由處理的express網站
+
+expr_3_get.js：
+處理RESTful風格的資料
+
+expr_3_path.js：
+處理RESTful風格，以及查詢字串的資料
+
+expr_4_mobile.js：
+加入"Access-Control-Allow-Origin"，允許跨網頁存取資料。
+
+index.js：
+讀取Arduino的溫溼度值
+
+os.js
+搭配「jsonp」資料夾的網頁練習跨網域資料存取

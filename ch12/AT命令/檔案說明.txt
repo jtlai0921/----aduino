@@ -1,0 +1,5 @@
+﻿AT_cmd_test資料夾：
+可透過序列埠監控視窗測試AT命令
+
+AT_server資料夾：
+透過AT命令建立HTTP網站伺服器服務
